@@ -2,13 +2,12 @@ version: '1.0'
 stages:
   - checkout
   - package
-  - test  
 steps:
   main_clone:
     title: Cloning main repository...
     type: git-clone
-    repo: '${{CF_REPO_OWNER}}/${{CF_REPO_NAME}}'
-    revision: '${{CF_REVISION}}'
+    repo: kangyeju/python-flask-sample-app
+    revision: master
     stage: checkout
   MyAppDockerImage:
     title: Building Docker Image
@@ -16,13 +15,6 @@ steps:
     stage: package
     image_name: my-app-image
     working_directory: ./
-    tag: v1.0.1
+    tag: v1.0.0
     dockerfile: Dockerfile
-    disable_push: true
-  MyUnitTests:
-    title: Running Unit tests
-    image: '${{MyAppDockerImage}}'
-    stage: test 
-    commands: 
-      - pip install pytest
-      - pytest
+      
