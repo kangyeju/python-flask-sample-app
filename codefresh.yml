@@ -31,5 +31,5 @@ steps:
     tag: master
     candidate: my-app-image
     image_name: kangyeju/pythonflasksampleapp
-    registry: test
+    registry: git-test
       
