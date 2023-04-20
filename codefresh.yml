@@ -17,4 +17,19 @@ steps:
     working_directory: ./
     tag: v1.0.0
     dockerfile: Dockerfile
+  MyUnitTests:
+    title: Running Unit tests
+    image: my-app-image
+    stage: test 
+    commands: 
+      - pip install pytest
+      - pytest      
+  MyPushStep:
+    title: Pushing to Docker Registry
+    type: push
+    stage: upload
+    tag: master
+    candidate: my-app-image
+    image_name: kangyeju/pythonflasksampleapp
+    registry: test
       
